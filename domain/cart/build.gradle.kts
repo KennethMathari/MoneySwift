@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "co.ke.imbank.data.cart"
+    namespace = "co.ke.imbank.domain.cart"
     compileSdk = 34
 
     defaultConfig {
@@ -34,14 +34,9 @@ android {
 
 dependencies {
 
-    implementation(project(":domain:cart"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    //Koin
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.android)
-    implementation(project(":core:database"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

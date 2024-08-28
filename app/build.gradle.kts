@@ -71,6 +71,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     //Kotlinx Serialization Json
     implementation(libs.kotlinx.serialization.json)
+    implementation(project(":core:database"))
+    implementation(project(":data:cart"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
