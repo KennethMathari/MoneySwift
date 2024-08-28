@@ -20,6 +20,7 @@ coilCompose = "2.7.0"
 adaptive = "1.0.0-rc01"
 navigation-compose = "2.8.0-rc01"
 roomRuntime = "2.6.1"
+lifecycleRuntimeComposeAndroid = "2.8.4"
 
 
 [libraries]
@@ -58,6 +59,8 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -11,7 +11,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import co.ke.imbank.domain.cart.model.CartDomain
+import co.ke.imbank.feature.product.mapper.toCartDomain
 import co.ke.imbank.feature.product.model.ProductPresentation
+import co.ke.imbank.feature.product.viewmodel.ProductViewModel
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 
@@ -19,7 +22,7 @@ import org.koin.androidx.compose.koinViewModel
 fun ProductDetail(
     productPresentation: ProductPresentation,
     modifier: Modifier,
-    //cartViewModel: CartViewModel = koinViewModel(),
+    productViewModel: ProductViewModel = koinViewModel(),
     navigateToCartScreen: () -> Unit,
     navigateToCheckoutScreen:(ProductPresentation)-> Unit
 ) {
@@ -39,7 +42,7 @@ fun ProductDetail(
         Text(text = productPresentation.description)
 
         Button(onClick = {
-            //cartViewModel.addCartItem(productPresentation.toCartPresentation())
+            productViewModel.addCartItem(productPresentation.toCartDomain())
             navigateToCartScreen()
         }) {
             Text(text = "Add to Cart")

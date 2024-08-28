@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(project(":core:database"))
     implementation(project(":data:cart"))
+    implementation(project(":feature:cart"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

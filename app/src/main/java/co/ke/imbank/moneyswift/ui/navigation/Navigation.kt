@@ -6,7 +6,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import co.ke.imbank.feature.cart.screen.CartScreen
 import co.ke.imbank.feature.product.screen.ProductListDetailScreen
+import co.ke.imbank.moneyswift.ui.navigation.destination.Cart
 import co.ke.imbank.moneyswift.ui.navigation.destination.ProductListDetail
 
 @Composable
@@ -24,9 +26,15 @@ fun Navigation(
             ProductListDetailScreen(
                 snackbarHostState = snackbarHostState,
                 scope = scope,
-                navigateToCartScreen = {})
+                navigateToCartScreen = {
+                    navHostController.navigate(Cart)
+                }
+            )
         }
 
+        composable<Cart> {
+            CartScreen()
+        }
 
     }
 

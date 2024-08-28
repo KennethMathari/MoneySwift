@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.androidx.adaptive.navigation)
     //Compose-Koin
     implementation(libs.koin.androidx.compose)
+    implementation(project(":domain:cart"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

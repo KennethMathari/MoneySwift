@@ -12,7 +12,9 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import co.ke.imbank.feature.cart.viewmodel.CartViewModel
 import co.ke.imbank.moneyswift.R
 import co.ke.imbank.moneyswift.ui.navigation.BottomNavigationItem
 import co.ke.imbank.moneyswift.ui.navigation.destination.Cart
@@ -23,10 +25,10 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun BottomAppNavigation(
     navHostController: NavHostController,
-    //cartViewModel: CartViewModel = koinViewModel()
+    cartViewModel: CartViewModel = koinViewModel()
 ) {
 
-    //val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
+    val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
 
     var selectedItemIndex by rememberSaveable {
         mutableIntStateOf(0)
@@ -45,7 +47,7 @@ fun BottomAppNavigation(
             selectedIcon = R.drawable.filled_cart,
             unselectedIcon = R.drawable.outlined_cart,
             hasUpdate = false,
-            badgeCount = 0,
+            badgeCount = cartState.cartList?.size,
             route = Cart
         ), BottomNavigationItem(
             title = "Settings",

@@ -5,6 +5,7 @@ import co.ke.imbank.data.cart.mapper.toCartDomain
 import co.ke.imbank.data.cart.mapper.toCartEntity
 import co.ke.imbank.domain.cart.model.CartDomain
 import co.ke.imbank.domain.cart.repository.CartRepository
+import co.ke.imbank.domain.cart.utils.DatabaseResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,7 +16,8 @@ import kotlinx.coroutines.withContext
 class CartRepositoryImpl(
     private val cartDao: CartDao, private val ioDispatcher: CoroutineDispatcher
 ) : CartRepository {
-    override suspend fun getCartItems(): Flow<Result<List<CartDomain>>> {
+
+    override suspend fun getCartItems(): Flow<DatabaseResult<List<CartDomain>>> {
         return flow {
             runCatching {
                 cartDao.getCartList().map { cartEntityList ->
@@ -25,11 +27,11 @@ class CartRepositoryImpl(
                 }
             }.onSuccess { listFlow ->
                 listFlow.collect { cartDomainList ->
-                    emit(Result.success(cartDomainList))
+                    emit(DatabaseResult.Success(cartDomainList))
                 }
             }.onFailure { throwable ->
                 throwable.printStackTrace()
-                //emit(Result.failure<Throwable>(throwable.cause))
+                emit(DatabaseResult.Error(throwable))
             }
         }.flowOn(ioDispatcher)
     }
