@@ -1,0 +1,33 @@
+package co.ke.imbank.moneyswift.ui.navigation
+
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import co.ke.imbank.feature.product.screen.ProductListDetailScreen
+import co.ke.imbank.moneyswift.ui.navigation.destination.ProductListDetail
+
+@Composable
+fun Navigation(
+    navHostController: NavHostController, snackbarHostState: SnackbarHostState
+) {
+
+    val scope = rememberCoroutineScope()
+
+    NavHost(
+        navController = navHostController, startDestination = ProductListDetail
+    ) {
+
+        composable<ProductListDetail> {
+            ProductListDetailScreen(
+                snackbarHostState = snackbarHostState,
+                scope = scope,
+                navigateToCartScreen = {})
+        }
+
+
+    }
+
+}

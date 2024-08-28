@@ -1,0 +1,21 @@
+package co.ke.imbank.moneyswift
+
+import android.app.Application
+import co.ke.imbank.core.network.di.networkModule
+import co.ke.imbank.data.product.di.productDataModule
+import co.ke.imbank.feature.product.viewmodel.di.productViewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+
+class MoneySwift: Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@MoneySwift)
+            modules(
+                networkModule,
+                productDataModule,
+                productViewModelModule)
+        }
+    }
+}
