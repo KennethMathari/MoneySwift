@@ -1,5 +1,8 @@
 package co.ke.imbank.feature.cart.screen
 
+import android.app.Activity
+import android.content.Context
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -30,12 +34,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import co.ke.imbank.feature.cart.viewmodel.CartViewModel
 import coil.compose.AsyncImage
+import kotlinx.coroutines.runBlocking
 import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
 fun CartScreen(
-    modifier: Modifier = Modifier, cartViewModel: CartViewModel = koinViewModel()
+    modifier: Modifier = Modifier,
+    cartViewModel: CartViewModel = koinViewModel(),
+    navigateToCheckoutScreen: () -> Unit,
+    activity: ComponentActivity
 ) {
     val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
 
@@ -64,10 +72,14 @@ fun CartScreen(
                         Card(
                             colors = CardDefaults.cardColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                            ), modifier = modifier.fillMaxWidth().padding(8.dp)
+                            ), modifier = modifier
+                                .fillMaxWidth()
+                                .padding(8.dp)
                         ) {
                             Row(
-                                modifier = Modifier.fillMaxWidth().padding(8.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp),
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
@@ -75,7 +87,9 @@ fun CartScreen(
                                     AsyncImage(
                                         model = cartItem.imageLocation,
                                         contentDescription = "${cartItem.name} image",
-                                        modifier = Modifier.size(70.dp).padding(start = 8.dp),
+                                        modifier = Modifier
+                                            .size(70.dp)
+                                            .padding(start = 8.dp),
                                         contentScale = ContentScale.Fit
                                     )
 
@@ -108,7 +122,9 @@ fun CartScreen(
                                 Icon(
                                     imageVector = Icons.Filled.Delete,
                                     contentDescription = "Delete item",
-                                    modifier = Modifier.size(35.dp).clickable(onClick = {
+                                    modifier = Modifier
+                                        .size(35.dp)
+                                        .clickable(onClick = {
                                             cartViewModel.deleteCartItem(cartItem)
                                         }),
                                     tint = MaterialTheme.colorScheme.secondary
@@ -120,9 +136,19 @@ fun CartScreen(
 
                 Text(
                     text = "Total: USD ${cartState.cartList?.sumOf { it.price }}",
-                    modifier = modifier.align(alignment = Alignment.End).padding(8.dp),
+                    modifier = modifier
+                        .align(alignment = Alignment.End)
+                        .padding(8.dp),
                     style = MaterialTheme.typography.titleLarge
                 )
+
+                Button(onClick = {
+                    //navigateToCheckoutScreen()
+                    cartViewModel.paymentSelect()
+
+                }) {
+                    Text(text = "Select Payment Method")
+                }
 
 
             }

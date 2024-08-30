@@ -1,28 +1,38 @@
 package co.ke.imbank.feature.cart.viewmodel
 
+import android.app.Application
+import androidx.activity.ComponentActivity
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import co.ke.imbank.domain.cart.repository.CartRepository
+import co.ke.imbank.domain.cart.utils.DatabaseResult
+import co.ke.imbank.feature.cart.StripeManager
+import co.ke.imbank.feature.cart.mapper.toCartDomain
+import co.ke.imbank.feature.cart.mapper.toCartPresentation
 import co.ke.imbank.feature.cart.model.CartPresentation
 import co.ke.imbank.feature.cart.state.CartState
+import com.stripe.android.PaymentConfiguration
+import com.stripe.android.paymentsheet.PaymentSheet
+import com.stripe.android.paymentsheet.PaymentSheetResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import androidx.lifecycle.viewModelScope
-import co.ke.imbank.domain.cart.utils.DatabaseResult
-import co.ke.imbank.feature.cart.mapper.toCartDomain
-import co.ke.imbank.feature.cart.mapper.toCartPresentation
 import kotlinx.coroutines.launch
 
 class CartViewModel(
-    private val cartRepository: CartRepository
-): ViewModel() {
+    private val cartRepository: CartRepository,
+    private val stripeManager: StripeManager
+) : ViewModel() {
 
     private val _cartState = MutableStateFlow(CartState())
     val cartState: StateFlow<CartState> get() = _cartState.asStateFlow()
 
+
     init {
         getCartItems()
+
     }
+
 
     private fun getCartItems() {
         viewModelScope.launch {
@@ -50,6 +60,12 @@ class CartViewModel(
     fun deleteCartItem(cartItem: CartPresentation) {
         viewModelScope.launch {
             cartRepository.deleteCartItem(cartItem.toCartDomain())
+        }
+    }
+
+    fun paymentSelect() {
+        viewModelScope.launch {
+            stripeManager.test()
         }
     }
 

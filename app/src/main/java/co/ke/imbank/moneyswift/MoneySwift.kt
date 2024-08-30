@@ -21,7 +21,8 @@ class MoneySwift: Application() {
                 productViewModelModule,
                 databaseModule,
                 cartDataModule,
-                cartViewModelModule
+                cartViewModelModule,
+                appModule
             )
         }
     }

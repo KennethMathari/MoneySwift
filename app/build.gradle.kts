@@ -54,6 +54,9 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":data:product"))
     implementation(project(":feature:product"))
+    implementation(project(":core:database"))
+    implementation(project(":data:cart"))
+    implementation(project(":feature:cart"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -71,9 +74,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     //Kotlinx Serialization Json
     implementation(libs.kotlinx.serialization.json)
-    implementation(project(":core:database"))
-    implementation(project(":data:cart"))
-    implementation(project(":feature:cart"))
+    // Stripe Android SDK
+    implementation ("com.stripe:stripe-android:20.48.6")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

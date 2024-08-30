@@ -6,4 +6,5 @@ import org.koin.dsl.module
 
 val cartViewModelModule = module {
     viewModelOf(::CartViewModel)
+
 }
