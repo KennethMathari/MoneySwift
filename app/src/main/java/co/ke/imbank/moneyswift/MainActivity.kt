@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.core.view.WindowCompat
 import co.ke.imbank.feature.cart.StripeManager
 import co.ke.imbank.moneyswift.ui.App
 import co.ke.imbank.moneyswift.ui.theme.MoneySwiftTheme
@@ -14,6 +15,8 @@ import com.stripe.android.paymentsheet.PaymentSheetResult
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity(), StripeManager {
+
+
 
 
     private val paymentSheet by lazy {
@@ -28,6 +31,7 @@ class MainActivity : ComponentActivity(), StripeManager {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         PaymentConfiguration.init(
             this,
@@ -35,11 +39,11 @@ class MainActivity : ComponentActivity(), StripeManager {
         )
 
         setContent {
-            MoneySwiftTheme {
+//            MoneySwiftTheme {
                 App(
                     activity = this
                 )
-            }
+//            }
         }
     }
 
@@ -49,7 +53,7 @@ class MainActivity : ComponentActivity(), StripeManager {
 
 
     private fun handleCheckoutButtonPressed() {
-        applicationContext?.let { context ->
+        applicationContext?.let {
             val intentConfig = PaymentSheet.IntentConfiguration(
                 mode = PaymentSheet.IntentConfiguration.Mode.Payment(
                     amount = 1099,
