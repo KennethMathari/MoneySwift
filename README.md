@@ -25,6 +25,8 @@ After opening the project, build and run to install the app in the emulator or a
  - Allows removing items from the cart.
 4. <b>Payment Sheet</b>
 - Collects the user's billing information e.g. Card, MPesa, Bitcoin etc
+5. <b>Confirmation Screen</b>
+- Displays a message to the user, notifying them whether the payment was successful or not.
 
 ## API
 > Products API: <https://my-json-server.typicode.com/carry1stdeveloper/mock-product-api/productBundles>
