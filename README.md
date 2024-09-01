@@ -47,6 +47,10 @@ Other dependencies are listed in the build.gradle files.
 ## Architecture
 The project follows the MVI (Model-View-Intent) architecture and is modularized into features consisting of the Data, Domain & UI layers.
 
+Below is an abstract diagram of the architecture
+![](https://github.com/user-attachments/assets/0fdf9c12-be8e-4e25-bc20-7946ba096b6f)
+
+
 ### App Module
 The app module serves as an entry point to the application. It depends on all, or relevant `feature` modules and provides root navigation. Additionally, the `app` module can depend directly on the `core` & `data`  modules.
 ### Feature Modules
