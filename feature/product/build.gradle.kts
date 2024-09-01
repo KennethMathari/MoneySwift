@@ -46,6 +46,8 @@ dependencies {
     implementation(project(":domain:product"))
     implementation(project(":core:network"))
     implementation(project(":data:product"))
+    implementation(project(":domain:cart"))
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -69,8 +71,15 @@ dependencies {
     implementation(libs.androidx.adaptive.navigation)
     //Compose-Koin
     implementation(libs.koin.androidx.compose)
-    implementation(project(":domain:cart"))
 
+    //Kotlin Coroutine Test
+    testImplementation(libs.kotlinx.coroutines.test)
+    //Turbine
+    testImplementation(libs.turbine)
+    //mockK
+    testImplementation(libs.mockk)
+    //Instantiator
+    testImplementation(libs.instantiator)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

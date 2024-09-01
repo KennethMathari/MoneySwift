@@ -55,6 +55,12 @@ dependencies {
 //    implementation(libs.androidx.appsearch.local.storage)
 
     testImplementation(libs.junit)
+    //mockK
+    testImplementation(libs.mockk)
+    //Instantiator
+    testImplementation(libs.instantiator)
+    //Kotlin Coroutine Test
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

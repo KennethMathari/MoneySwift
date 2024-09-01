@@ -35,14 +35,21 @@ android {
 dependencies {
 
     implementation(project(":domain:cart"))
+    implementation(project(":core:database"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     //Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
-    implementation(project(":core:database"))
+
     testImplementation(libs.junit)
+    //mockK
+    testImplementation(libs.mockk)
+    //Instantiator
+    testImplementation(libs.instantiator)
+    //Kotlin Coroutine Test
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -28,13 +28,7 @@ fun SuccessDialog(
         TextButton(onClick = {
             onConfirmation()
         }) {
-            Text("Confirm")
-        }
-    }, dismissButton = {
-        TextButton(onClick = {
-            onDismissRequest()
-        }) {
-            Text("Dismiss")
+            Text("OK")
         }
     }, containerColor = Color.White)
 }
