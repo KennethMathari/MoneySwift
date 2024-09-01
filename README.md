@@ -5,7 +5,7 @@ MoneySwift is a fictitious Fintech company that provides an e-commerce solution.
 To set up and run this project on your local machine, follow these steps:
 
 1. Clone the repository:
-> git clone <https://github.com/KennethMathari/Carry1st_Ecommerce>
+> git clone <https://github.com/KennethMathari/MoneySwift>
 2. Open the project in Android Studio.
 - Launch Android Studio and select Open an existing Android Studio project. Then navigate to the directory where you cloned the repository and select the project.
 3. Sync Gradle files:
