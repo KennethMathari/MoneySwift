@@ -17,15 +17,26 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import co.ke.imbank.feature.cart.R
+import co.ke.imbank.feature.cart.model.CardPaymentPresentation
+import co.ke.imbank.feature.cart.viewmodel.CartViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun CardForm() {
+fun CardForm(
+    onCancel: ()-> Unit,
+    cartViewModel: CartViewModel = koinViewModel()
+    ) {
+    val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
+
     var cardNumber by remember { mutableStateOf("") }
     var cardExpiry by remember { mutableStateOf("") }
     var cardCVC by remember { mutableStateOf("") }
@@ -42,7 +53,9 @@ fun CardForm() {
             onValueChange = { cardNumber = it },
             label = { Text("Card Number") },
             placeholder = { Text("1234 5678 9101 1121") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next),
             visualTransformation = CreditCardVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
@@ -55,7 +68,10 @@ fun CardForm() {
             onValueChange = { cardExpiry = it },
             label = { Text("Expiry Date") },
             placeholder = { Text("MM/YY") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
+            ),
             visualTransformation = DateVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
@@ -68,7 +84,9 @@ fun CardForm() {
             onValueChange = { cardCVC = it },
             label = { Text("CVC") },
             placeholder = { Text("123") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.NumberPassword,
+                imeAction = ImeAction.Next),
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
@@ -81,14 +99,30 @@ fun CardForm() {
             onValueChange = { cardHolderName = it },
             label = { Text("Cardholder Name") },
             placeholder = { Text("John Doe") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done),
             modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        val cardPaymentPresentation = CardPaymentPresentation(
+            type = "Card",
+            cardNumber = cardNumber,
+            cardExpiry = cardExpiry,
+            cardCVC = cardCVC,
+            cardHolderName = cardHolderName,
+            paymentImage = R.drawable.card
+        )
+
+        val cartitems = cartState.cartList
+
         Button(
-            onClick = {},
+            onClick = {
+                onCancel()
+                cartViewModel.cardPayment(cardPaymentPresentation, cartitems ?: emptyList())
+            },
             modifier = Modifier.align(Alignment.End)
         ) {
             Text(text = "Pay with Card")

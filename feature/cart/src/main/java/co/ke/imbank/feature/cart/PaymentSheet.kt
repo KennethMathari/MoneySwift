@@ -2,29 +2,21 @@ package co.ke.imbank.feature.cart
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -38,10 +30,9 @@ import co.ke.imbank.feature.cart.component.CardForm
 import co.ke.imbank.feature.cart.component.MpesaForm
 import co.ke.imbank.feature.cart.model.PaymentMethod
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PaymentSheetContent(
-    onCancel: () -> Unit, onConfirm: () -> Unit
+    onCancel: ()-> Unit
 ) {
 
     var selectedPaymentMethod by remember { mutableStateOf<PaymentMethod?>(null) }
@@ -69,8 +60,16 @@ fun PaymentSheetContent(
         // Display form based on selected payment method
         selectedPaymentMethod?.let {
             when (it.name) {
-                "Card" -> CardForm()
-                "M-Pesa" -> MpesaForm()
+                "Card" -> CardForm(
+                    onCancel = {
+                        onCancel()
+                    }
+                )
+                "M-Pesa" -> MpesaForm(
+                    onCancel = {
+                        onCancel()
+                    }
+                )
                 "Airtel Money" -> AirtelMoneyForm()
                 "Bitcoin" -> BitcoinForm()
                 "Kidney" -> KidneyForm()
@@ -108,7 +107,7 @@ fun PaymentMethodOption(paymentMethods: List<PaymentMethod>, onPaymentMethodSele
 @Composable
 fun KidneyForm() {
         Text(
-            text = "Unfortunately, we do not accept Kidney payments! Please try another payment method.",
+            text = "Unfortunately, the Kidney payment method is currently not available!",
             fontWeight = FontWeight.Bold,
             fontSize = 25.sp,
             color = Color.Red

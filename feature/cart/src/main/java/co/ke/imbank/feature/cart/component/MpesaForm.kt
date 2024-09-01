@@ -19,9 +19,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import co.ke.imbank.feature.cart.R
+import co.ke.imbank.feature.cart.model.MpesaPaymentPresentation
+import co.ke.imbank.feature.cart.viewmodel.CartViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MpesaForm(){
+fun MpesaForm(
+    onCancel: ()-> Unit,
+    cartViewModel: CartViewModel = koinViewModel()
+){
+
+    val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
 
     var phoneNumber by remember { mutableStateOf("") }
     var fullName by remember { mutableStateOf("") }
@@ -57,8 +67,21 @@ fun MpesaForm(){
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        val mpesaPaymentPresentation = MpesaPaymentPresentation(
+            fullname = fullName,
+            phoneNumber = phoneNumber,
+            type = "M-PESA",
+            mpesaImage = R.drawable.mpesa
+        )
+
         Button(
-            onClick = {},
+            onClick = {
+                cartViewModel.mpesaPayment(
+                    mpesaPaymentPresentation = mpesaPaymentPresentation,
+                    cartList = cartState.cartList ?: emptyList()
+                )
+                onCancel()
+            },
             modifier = Modifier.align(Alignment.End)
         ) {
             Text(text = "Pay with M-Pesa")
