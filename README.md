@@ -48,7 +48,7 @@ Other dependencies are listed in the build.gradle files.
 The project follows the MVI (Model-View-Intent) architecture and is modularized into features consisting of the Data, Domain & UI layers.
 
 Below is an abstract diagram of the architecture
-![](https://github.com/user-attachments/assets/0fdf9c12-be8e-4e25-bc20-7946ba096b6f)
+> ![](https://github.com/user-attachments/assets/0fdf9c12-be8e-4e25-bc20-7946ba096b6f)
 
 
 ### App Module
@@ -64,4 +64,8 @@ Core modules, also known as common modules, contain code that other modules freq
 Features depend on core modules and core modules can depend on one another. We should be careful to not create cyclical dependencies amongst the core modules, however.
 
 In the case of cyclical dependencies we most likely can refactor the code which is needed into a separate core module such as :core-common
+
+## App Screenshots
+> ![image](https://github.com/user-attachments/assets/c9de9ff4-4c69-404e-a845-eef0df2dc8de)
+
 
