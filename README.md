@@ -41,9 +41,10 @@ After opening the project, build and run to install the app in the emulator or a
 - <b>List-Detail Layout </b>: For a dual-pane layout where one pane presents a list of items and another pane displays the details of items selected from the list.
 - <b>Instantiator </b>: a little Kotlin library that uses reflection to fill data class with random test data.
 - <b>Coil </b>: For image loading and caching.
+- <b>KtLint</b>: creates convenient tasks in your Gradle project that run ktlint checks or do code auto format.
 - <b>JUnit </b>: For unit testing.
 - <b>MockK </b>: For mocking dependencies in tests.
-- <b> Turbine </b> : Specialized library for testing kotlinx.coroutines Flow.
+- <b>Turbine </b> : Specialized library for testing kotlinx.coroutines Flow.
 
 Other dependencies are listed in the build.gradle files.
 
@@ -73,6 +74,6 @@ In the case of cyclical dependencies we most likely can refactor the code which 
 > 
 
 ## APK File
-The APK file is [here](https://drive.google.com/file/d/1lMT8AHoYianNO-YPlqPIT8s3kMHBPhtn/view?usp=drive_link)
+The app APK can be found from the latest successful action on the [GitHub Actions](https://github.com/KennethMathari/MoneySwift/actions) tab
 
 
