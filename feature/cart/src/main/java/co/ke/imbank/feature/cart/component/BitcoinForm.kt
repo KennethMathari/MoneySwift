@@ -23,7 +23,6 @@ fun BitcoinForm() {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-
         // Bitcoin Wallet Address
         OutlinedTextField(
             value = "", // Replace with a state variable

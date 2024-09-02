@@ -9,7 +9,9 @@ val databaseModule = module {
 
     single<MoneySwiftDatabase> {
         Room.databaseBuilder(
-            get(), MoneySwiftDatabase::class.java,"moneyswift_db"
+            get(),
+            MoneySwiftDatabase::class.java,
+            "moneyswift_db"
         ).build()
     }
 

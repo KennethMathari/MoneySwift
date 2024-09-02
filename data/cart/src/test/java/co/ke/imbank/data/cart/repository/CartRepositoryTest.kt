@@ -20,7 +20,7 @@ class CartRepositoryTest {
     fun getCartItemsReturnsSuccess() = runTest {
         coEvery {
             cartRepository.getCartItems()
-        }returns  flowOf(DatabaseResult.Success(listOf(cartDomain)))
+        } returns flowOf(DatabaseResult.Success(listOf(cartDomain)))
 
         val result = cartRepository.getCartItems().first()
 
@@ -31,7 +31,7 @@ class CartRepositoryTest {
     fun getCartItemsReturnsError() = runTest {
         coEvery {
             cartRepository.getCartItems()
-        }returns  flowOf(DatabaseResult.Error(throwable))
+        } returns flowOf(DatabaseResult.Error(throwable))
 
         val result = cartRepository.getCartItems().first()
 
@@ -42,7 +42,7 @@ class CartRepositoryTest {
     fun addCartItemReturnsUnit() = runTest {
         coEvery {
             cartRepository.addCartItem(cartDomain)
-        }returns Unit
+        } returns Unit
 
         val result = cartRepository.addCartItem(cartDomain)
 
@@ -59,5 +59,4 @@ class CartRepositoryTest {
 
         assertEquals(Unit, result)
     }
-
 }

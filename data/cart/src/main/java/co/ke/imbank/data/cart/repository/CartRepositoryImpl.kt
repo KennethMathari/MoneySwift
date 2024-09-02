@@ -14,7 +14,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class CartRepositoryImpl(
-    private val cartDao: CartDao, private val ioDispatcher: CoroutineDispatcher
+    private val cartDao: CartDao,
+    private val ioDispatcher: CoroutineDispatcher
 ) : CartRepository {
 
     override suspend fun getCartItems(): Flow<DatabaseResult<List<CartDomain>>> {

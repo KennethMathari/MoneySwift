@@ -45,15 +45,15 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
-    //Koin
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
-    //Compose-Koin
+    // Compose-Koin
     implementation(libs.koin.androidx.compose)
-    //Coil
+    // Coil
     implementation(libs.coil.compose)
     // Stripe Android SDK
-    implementation ("com.stripe:stripe-android:20.48.6")
+    implementation("com.stripe:stripe-android:20.48.6")
 
     implementation(libs.androidx.lifecycle.runtime.compose.android)
 

@@ -15,7 +15,6 @@ val networkModule = module {
             .connectTimeout(30, TimeUnit.SECONDS).retryOnConnectionFailure(true).build()
     }
 
-
     single<Retrofit> {
         val contentType = "application/json".toMediaType()
 

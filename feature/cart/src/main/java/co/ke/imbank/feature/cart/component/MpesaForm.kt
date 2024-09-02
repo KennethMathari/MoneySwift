@@ -26,10 +26,9 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MpesaForm(
-    onCancel: ()-> Unit,
+    onCancel: () -> Unit,
     cartViewModel: CartViewModel = koinViewModel()
-){
-
+) {
     val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
 
     var phoneNumber by remember { mutableStateOf("") }
@@ -40,7 +39,6 @@ fun MpesaForm(
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-
         // Full Name
         OutlinedTextField(
             value = fullName,
@@ -86,5 +84,4 @@ fun MpesaForm(
             Text(text = "Pay with M-Pesa")
         }
     }
-
 }

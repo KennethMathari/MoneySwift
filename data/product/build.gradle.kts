@@ -42,24 +42,24 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    //Retrofit
+    // Retrofit
     implementation(libs.retrofit)
-    //Kotlinx Serialization Json
+    // Kotlinx Serialization Json
     implementation(libs.kotlinx.serialization.json)
-    //Koin
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
-    //AppSearch
+    // AppSearch
     implementation(libs.androidx.appsearch)
     kapt(libs.androidx.appsearch.compiler)
     implementation(libs.androidx.appsearch.local.storage)
 
     testImplementation(libs.junit)
-    //mockK
+    // mockK
     testImplementation(libs.mockk)
-    //Instantiator
+    // Instantiator
     testImplementation(libs.instantiator)
-    //Kotlin Coroutine Test
+    // Kotlin Coroutine Test
     testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -37,18 +37,17 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    //Retrofit
+    // Retrofit
     implementation(libs.retrofit)
-    //OkHttp
+    // OkHttp
     implementation(libs.okhttp)
-    //Kotlinx Serialization Json
+    // Kotlinx Serialization Json
     implementation(libs.kotlinx.serialization.json)
-    //Koin
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
-    //Kotlin Serialization Converter
+    // Kotlin Serialization Converter
     implementation(libs.retrofit2.kotlinx.serialization.converter)
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

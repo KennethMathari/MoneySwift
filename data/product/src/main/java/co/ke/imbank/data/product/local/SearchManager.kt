@@ -33,7 +33,8 @@ class SearchManager(
         withContext(ioDispatcher) {
             val sessionFuture = LocalStorage.createSearchSessionAsync(
                 LocalStorage.SearchContext.Builder(
-                    context, "moneyswift"
+                    context,
+                    "moneyswift"
                 ).build()
             )
 
@@ -43,7 +44,6 @@ class SearchManager(
             session = sessionFuture.get()
 
             session?.setSchemaAsync(setSchemaRequest)
-
         }
     }
 
@@ -63,16 +63,21 @@ class SearchManager(
                     .setRankingStrategy(SearchSpec.RANKING_STRATEGY_SYSTEM_USAGE_COUNT).build()
 
             val result = session?.search(
-                query, searchSpec
+                query,
+                searchSpec
             ) ?: return@withContext emptyList()
 
             val page = result.nextPageAsync.get()
 
             page.mapNotNull { searchResult ->
-                if (searchResult.genericDocument.schemaType == ProductDocument::class.java.simpleName) {
+                val document = ProductDocument::class.java.simpleName
+                if (
+                    searchResult.genericDocument.schemaType == document
+                ) {
                     searchResult.getDocument(ProductDocument::class.java).toProductDomain()
-                } else null
-
+                } else {
+                    null
+                }
             }
         }
     }
@@ -83,18 +88,26 @@ class SearchManager(
                 .setRankingStrategy(SearchSpec.RANKING_STRATEGY_SYSTEM_USAGE_COUNT).build()
 
             val result = session?.search(
-                "", searchSpec
+                "",
+                searchSpec
             ) ?: return@withContext emptyList()
 
             val recipients = mutableListOf<ProductDocument>()
 
             do {
                 val page = result.nextPageAsync.get()
-                recipients.addAll(page.mapNotNull { searchResult ->
-                    if (searchResult.genericDocument.schemaType == ProductDocument::class.java.simpleName) {
-                        searchResult.getDocument(ProductDocument::class.java)
-                    } else null
-                })
+                recipients.addAll(
+                    page.mapNotNull { searchResult ->
+                        val document = ProductDocument::class.java.simpleName
+                        if (
+                            searchResult.genericDocument.schemaType == document
+                        ) {
+                            searchResult.getDocument(ProductDocument::class.java)
+                        } else {
+                            null
+                        }
+                    }
+                )
             } while (result.nextPageAsync.get().isNotEmpty())
 
             recipients.map { it.toProductDomain() }
@@ -105,5 +118,4 @@ class SearchManager(
         session?.close()
         session = null
     }
-
 }

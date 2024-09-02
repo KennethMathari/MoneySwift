@@ -38,10 +38,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    //Koin
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
-    //Room
+    // Room
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)

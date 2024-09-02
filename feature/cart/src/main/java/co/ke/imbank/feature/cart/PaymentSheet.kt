@@ -28,14 +28,13 @@ import co.ke.imbank.feature.cart.component.AirtelMoneyForm
 import co.ke.imbank.feature.cart.component.BitcoinForm
 import co.ke.imbank.feature.cart.component.CardForm
 import co.ke.imbank.feature.cart.component.MpesaForm
-import co.ke.imbank.feature.cart.model.PaymentMethod
+import co.ke.imbank.feature.cart.model.PaymentMethodOption
 
 @Composable
 fun PaymentSheetContent(
-    onCancel: ()-> Unit
+    onCancel: () -> Unit
 ) {
-
-    var selectedPaymentMethod by remember { mutableStateOf<PaymentMethod?>(null) }
+    var selectedPaymentMethodOption by remember { mutableStateOf<PaymentMethodOption?>(null) }
 
     Column(
         modifier = Modifier
@@ -51,14 +50,14 @@ fun PaymentSheetContent(
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        PaymentMethodOption(paymentMethodsOptions) { paymentMethod ->
-            selectedPaymentMethod = paymentMethod
+        PaymentMethodOption(paymentMethodsOptionOptions) { paymentMethod ->
+            selectedPaymentMethodOption = paymentMethod
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Display form based on selected payment method
-        selectedPaymentMethod?.let {
+        selectedPaymentMethodOption?.let {
             when (it.name) {
                 "Card" -> CardForm(
                     onCancel = {
@@ -77,17 +76,16 @@ fun PaymentSheetContent(
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-
     }
-
-
 }
 
-
 @Composable
-fun PaymentMethodOption(paymentMethods: List<PaymentMethod>, onPaymentMethodSelected: (PaymentMethod) -> Unit) {
+fun PaymentMethodOption(
+    paymentMethodOptions: List<PaymentMethodOption>,
+    onPaymentMethodSelected: (PaymentMethodOption) -> Unit
+) {
     LazyRow {
-        items(paymentMethods) { paymentMethod ->
+        items(paymentMethodOptions) { paymentMethod ->
             Card(
                 modifier = Modifier
                     .padding(8.dp)
@@ -97,7 +95,7 @@ fun PaymentMethodOption(paymentMethods: List<PaymentMethod>, onPaymentMethodSele
                     painter = painterResource(id = paymentMethod.image),
                     contentDescription = paymentMethod.name,
                     modifier = Modifier.size(70.dp),
-                    contentScale = ContentScale.FillBounds,
+                    contentScale = ContentScale.FillBounds
                 )
             }
         }
@@ -106,33 +104,38 @@ fun PaymentMethodOption(paymentMethods: List<PaymentMethod>, onPaymentMethodSele
 
 @Composable
 fun KidneyForm() {
-        Text(
-            text = "Unfortunately, the Kidney payment method is currently not available!",
-            fontWeight = FontWeight.Bold,
-            fontSize = 25.sp,
-            color = Color.Red
-        )
+    Text(
+        text = "Unfortunately, the Kidney payment method is currently not available!",
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp,
+        color = Color.Red
+    )
 }
 
-val paymentMethodsOptions = listOf(
-    PaymentMethod(
-        name = "Card", image = R.drawable.card
+val paymentMethodsOptionOptions = listOf(
+    PaymentMethodOption(
+        name = "Card",
+        image = R.drawable.card
     ),
 
-    PaymentMethod(
-        name = "M-Pesa", image = R.drawable.mpesa
+    PaymentMethodOption(
+        name = "M-Pesa",
+        image = R.drawable.mpesa
     ),
 
-    PaymentMethod(
-        name = "Airtel Money", image = R.drawable.airtelmoney
+    PaymentMethodOption(
+        name = "Airtel Money",
+        image = R.drawable.airtelmoney
     ),
 
-    PaymentMethod(
-        name = "Bitcoin", image = R.drawable.bitcoin
+    PaymentMethodOption(
+        name = "Bitcoin",
+        image = R.drawable.bitcoin
     ),
 
-    PaymentMethod(
-        name = "Kidney", image = R.drawable.kidney
-    ),
-
+    PaymentMethodOption(
+        name = "Kidney",
+        image = R.drawable.kidney
     )
+
+)

@@ -20,7 +20,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AirtelMoneyForm(){
+fun AirtelMoneyForm() {
     var phoneNumber by remember { mutableStateOf("") }
     var fullName by remember { mutableStateOf("") }
 
@@ -29,7 +29,6 @@ fun AirtelMoneyForm(){
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-
         // Full Name
         OutlinedTextField(
             value = fullName,

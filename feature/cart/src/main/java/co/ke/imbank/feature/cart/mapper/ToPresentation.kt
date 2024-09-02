@@ -3,9 +3,8 @@ package co.ke.imbank.feature.cart.mapper
 import co.ke.imbank.domain.cart.model.CartDomain
 import co.ke.imbank.feature.cart.model.CartPresentation
 
-
-fun CartPresentation.toCartDomain(): CartDomain {
-    return CartDomain(
+fun CartDomain.toCartPresentation(): CartPresentation {
+    return CartPresentation(
         currencyCode = this.currencyCode,
         currencySymbol = this.currencySymbol,
         description = this.description,

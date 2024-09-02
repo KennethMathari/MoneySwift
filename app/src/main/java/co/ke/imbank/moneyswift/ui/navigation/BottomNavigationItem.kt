@@ -2,7 +2,6 @@ package co.ke.imbank.moneyswift.ui.navigation
 
 import kotlinx.serialization.Serializable
 
-
 @Serializable
 data class BottomNavigationItem<T>(
     val title: String,

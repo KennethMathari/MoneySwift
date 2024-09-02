@@ -20,13 +20,12 @@ fun Navigation(
     snackbarHostState: SnackbarHostState,
     activity: ComponentActivity
 ) {
-
     val scope = rememberCoroutineScope()
 
     NavHost(
-        navController = navHostController, startDestination = ProductListDetail
+        navController = navHostController,
+        startDestination = ProductListDetail
     ) {
-
         composable<ProductListDetail> {
             ProductListDetailScreen(
                 snackbarHostState = snackbarHostState,
@@ -49,7 +48,5 @@ fun Navigation(
         composable<Checkout> {
             CheckoutScreen()
         }
-
     }
-
 }

@@ -31,7 +31,6 @@ fun ProductListDetailScreen(
     scope: CoroutineScope,
     navigateToCartScreen: () -> Unit
 ) {
-
     val productState by productViewModel.productListState.collectAsStateWithLifecycle()
     val navigator = rememberListDetailPaneScaffoldNavigator<ProductPresentation>()
 
@@ -39,12 +38,12 @@ fun ProductListDetailScreen(
         if (productState.isLoading) {
             LoadingScreen()
         } else {
-
             BackHandler(navigator.canNavigateBack()) {
                 navigator.navigateBack()
             }
 
-            ListDetailPaneScaffold(directive = navigator.scaffoldDirective,
+            ListDetailPaneScaffold(
+                directive = navigator.scaffoldDirective,
                 value = navigator.scaffoldValue,
                 listPane = {
                     AnimatedPane {
@@ -53,7 +52,8 @@ fun ProductListDetailScreen(
                             productListState = productState,
                             onProductClicked = { productPresentation ->
                                 navigator.navigateTo(
-                                    ListDetailPaneScaffoldRole.Detail, productPresentation
+                                    ListDetailPaneScaffoldRole.Detail,
+                                    productPresentation
                                 )
                             },
                             productListViewModel = productViewModel
@@ -63,25 +63,28 @@ fun ProductListDetailScreen(
                 detailPane = {
                     AnimatedPane {
                         navigator.currentDestination?.content?.let { productPresentation ->
-                            ProductDetail(modifier = modifier,
+                            ProductDetail(
+                                modifier = modifier,
                                 productPresentation = productPresentation,
                                 navigateToCartScreen = navigateToCartScreen,
                                 navigateToCheckoutScreen = { product ->
                                     navigator.navigateTo(
-                                        ListDetailPaneScaffoldRole.Extra, product
+                                        ListDetailPaneScaffoldRole.Extra,
+                                        product
                                     )
-                                })
+                                }
+                            )
                         }
                     }
                 },
                 extraPane = {
                     AnimatedPane {
                         navigator.currentDestination?.content?.let { product ->
-                            //BuyNow(product = product, modifier = modifier)
-
+                            // BuyNow(product = product, modifier = modifier)
                         }
                     }
-                })
+                }
+            )
 
             LaunchedEffect(productState.errorMessage) {
                 scope.launch {
@@ -89,9 +92,7 @@ fun ProductListDetailScreen(
                         snackbarHostState.showSnackbar(errorMessage)
                     }
                 }
-
             }
-
         }
     }
 }

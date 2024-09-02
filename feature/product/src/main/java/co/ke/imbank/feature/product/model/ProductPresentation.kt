@@ -14,4 +14,4 @@ data class ProductPresentation(
     val price: Int,
     val quantity: Int,
     val status: String
-): Parcelable
+) : Parcelable

@@ -14,8 +14,8 @@ import co.ke.imbank.moneyswift.ui.navigation.Navigation
 
 @Composable
 fun App(
-    activity: ComponentActivity,
-){
+    activity: ComponentActivity
+) {
     val navController = rememberNavController()
     val snackbarHostState = remember { SnackbarHostState() }
     Scaffold(

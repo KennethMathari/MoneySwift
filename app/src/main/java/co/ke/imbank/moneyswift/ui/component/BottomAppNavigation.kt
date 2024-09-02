@@ -27,7 +27,6 @@ fun BottomAppNavigation(
     navHostController: NavHostController,
     cartViewModel: CartViewModel = koinViewModel()
 ) {
-
     val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
 
     var selectedItemIndex by rememberSaveable {
@@ -42,14 +41,16 @@ fun BottomAppNavigation(
             hasUpdate = false,
             badgeCount = null,
             route = ProductListDetail
-        ), BottomNavigationItem(
+        ),
+        BottomNavigationItem(
             title = "Cart",
             selectedIcon = R.drawable.filled_cart,
             unselectedIcon = R.drawable.outlined_cart,
             hasUpdate = false,
             badgeCount = cartState.cartList?.size,
             route = Cart
-        ), BottomNavigationItem(
+        ),
+        BottomNavigationItem(
             title = "Settings",
             selectedIcon = R.drawable.filled_settings,
             unselectedIcon = R.drawable.outlined_settings,
@@ -59,34 +60,33 @@ fun BottomAppNavigation(
         )
     )
 
-
     NavigationBar {
-
         bottomNavItems.forEachIndexed { index, item ->
             NavigationBarItem(label = {
                 Text(text = item.title)
             }, selected = selectedItemIndex == index, onClick = {
-                selectedItemIndex = index
-                navHostController.navigate(item.route)
-            }, icon = {
-                BadgedBox(badge = {
-                    if (item.badgeCount != null && item.badgeCount != 0) {
-                        Badge {
-                            Text(text = item.badgeCount.toString())
+                    selectedItemIndex = index
+                    navHostController.navigate(item.route)
+                }, icon = {
+                    BadgedBox(badge = {
+                        if (item.badgeCount != null && item.badgeCount != 0) {
+                            Badge {
+                                Text(text = item.badgeCount.toString())
+                            }
+                        } else if (item.hasUpdate) {
+                            Badge()
                         }
-                    } else if (item.hasUpdate) {
-                        Badge()
+                    }) {
+                        Icon(
+                            painter = if (index == selectedItemIndex) {
+                                painterResource(id = item.selectedIcon)
+                            } else {
+                                painterResource(id = item.unselectedIcon)
+                            },
+                            contentDescription = item.title
+                        )
                     }
-                }) {
-                    Icon(
-                        painter = if (index == selectedItemIndex) {
-                            painterResource(id = item.selectedIcon)
-                        } else painterResource(id = item.unselectedIcon),
-                        contentDescription = item.title
-                    )
-                }
-            })
-
+                })
         }
     }
 }

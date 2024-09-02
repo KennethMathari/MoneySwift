@@ -32,9 +32,9 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CardForm(
-    onCancel: ()-> Unit,
+    onCancel: () -> Unit,
     cartViewModel: CartViewModel = koinViewModel()
-    ) {
+) {
     val cartState by cartViewModel.cartState.collectAsStateWithLifecycle()
 
     var cardNumber by remember { mutableStateOf("") }
@@ -55,7 +55,8 @@ fun CardForm(
             placeholder = { Text("1234 5678 9101 1121") },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next),
+                imeAction = ImeAction.Next
+            ),
             visualTransformation = CreditCardVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
@@ -86,7 +87,8 @@ fun CardForm(
             placeholder = { Text("123") },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.NumberPassword,
-                imeAction = ImeAction.Next),
+                imeAction = ImeAction.Next
+            ),
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
@@ -101,7 +103,8 @@ fun CardForm(
             placeholder = { Text("John Doe") },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done),
+                imeAction = ImeAction.Done
+            ),
             modifier = Modifier.fillMaxWidth()
         )
 

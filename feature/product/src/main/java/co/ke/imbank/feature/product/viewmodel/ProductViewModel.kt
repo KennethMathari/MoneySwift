@@ -42,9 +42,10 @@ class ProductViewModel(
             val productList =
                 searchManager.fetchProductListFromLocalStorage().map { it.toProductPresentation() }
             _productListState.value = ProductListState(
-                productList = productList, isLoading = false, errorMessage = null
+                productList = productList,
+                isLoading = false,
+                errorMessage = null
             )
-
         }
     }
 
@@ -52,7 +53,9 @@ class ProductViewModel(
         viewModelScope.launch {
             runBlocking {
                 _productListState.value = ProductListState(
-                    productList = null, isLoading = true, errorMessage = null
+                    productList = null,
+                    isLoading = true,
+                    errorMessage = null
                 )
 
                 productRepository.getProductListFromServer().collect { result ->
@@ -81,7 +84,9 @@ class ProductViewModel(
     private fun updateErrorMessage(errorMessage: String) {
         _productListState.update {
             it.copy(
-                productList = null, isLoading = false, errorMessage = errorMessage
+                productList = null,
+                isLoading = false,
+                errorMessage = errorMessage
             )
         }
     }
@@ -107,7 +112,6 @@ class ProductViewModel(
                 errorMessage = null,
                 searchQuery = query
             )
-
         }
     }
 
@@ -115,5 +119,4 @@ class ProductViewModel(
         searchManager.closeSession()
         super.onCleared()
     }
-
 }

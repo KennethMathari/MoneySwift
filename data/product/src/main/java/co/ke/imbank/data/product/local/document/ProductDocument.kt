@@ -16,9 +16,11 @@ data class ProductDocument(
 
     @StringProperty val currencyCode: String,
     @StringProperty val currencySymbol: String,
-    @StringProperty(indexingType = AppSearchSchema.StringPropertyConfig.INDEXING_TYPE_PREFIXES) val description: String,
+    @StringProperty(indexingType = AppSearchSchema.StringPropertyConfig.INDEXING_TYPE_PREFIXES)
+    val description: String,
     @StringProperty val imageLocation: String,
-    @StringProperty(indexingType = AppSearchSchema.StringPropertyConfig.INDEXING_TYPE_PREFIXES) val name: String,
+    @StringProperty(indexingType = AppSearchSchema.StringPropertyConfig.INDEXING_TYPE_PREFIXES)
+    val name: String,
     @LongProperty val price: Int,
     @LongProperty val quantity: Int,
     @StringProperty val status: String

@@ -37,29 +37,33 @@ fun ProductList(
     onProductClicked: (ProductPresentation) -> Unit,
     productListViewModel: ProductViewModel
 ) {
-
     Column {
-
         OutlinedTextField(
             value = productListState.searchQuery,
             onValueChange = productListViewModel::searchProductList,
             label = {
-            Text(text = "Search")
-        }, placeholder = {
-            Text(text = "Search for product..")
-        }, singleLine = true, keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Text, imeAction = ImeAction.Search
-        ), modifier = modifier
-            .padding(8.dp)
-            .fillMaxWidth()
+                Text(text = "Search")
+            },
+            placeholder = {
+                Text(text = "Search for product..")
+            },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+            ),
+            modifier = modifier
+                .padding(8.dp)
+                .fillMaxWidth()
         )
 
         LazyColumn {
             items(productListState.productList ?: emptyList()) { product ->
                 Card(
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                    ), modifier = modifier
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    ),
+                    modifier = modifier
                         .fillMaxWidth()
                         .padding(8.dp)
                         .clickable(onClick = {
@@ -86,7 +90,8 @@ fun ProductList(
                                 .padding(start = 8.dp, top = 8.dp)
                         ) {
                             Text(
-                                text = product.name, style = MaterialTheme.typography.titleLarge
+                                text = product.name,
+                                style = MaterialTheme.typography.titleLarge
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Row {
@@ -101,13 +106,10 @@ fun ProductList(
                                     style = MaterialTheme.typography.titleMedium
                                 )
                             }
-
                         }
-
                     }
                 }
             }
-
         }
     }
 }

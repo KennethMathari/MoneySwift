@@ -1,10 +1,10 @@
-package co.ke.imbank.feature.product.mapper
+package co.ke.imbank.feature.cart.mapper
 
-import co.ke.imbank.domain.product.model.ProductDomain
-import co.ke.imbank.feature.product.model.ProductPresentation
+import co.ke.imbank.domain.cart.model.CartDomain
+import co.ke.imbank.feature.cart.model.CartPresentation
 
-fun ProductDomain.toProductPresentation(): ProductPresentation {
-    return ProductPresentation(
+fun CartPresentation.toCartDomain(): CartDomain {
+    return CartDomain(
         currencyCode = this.currencyCode,
         currencySymbol = this.currencySymbol,
         description = this.description,

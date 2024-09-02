@@ -24,7 +24,8 @@ val productDataModule = module {
 
     single<ProductRepository> {
         ProductRepositoryImpl(
-            productService = get(), ioDispatcher = get()
+            productService = get(),
+            ioDispatcher = get()
         )
     }
 
@@ -34,8 +35,9 @@ val productDataModule = module {
 
     single<SearchManager> {
         SearchManager(
-            context = get(), ioDispatcher = get(), scope = get()
+            context = get(),
+            ioDispatcher = get(),
+            scope = get()
         )
     }
-
 }

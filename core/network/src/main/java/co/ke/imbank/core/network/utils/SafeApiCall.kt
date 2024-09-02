@@ -20,7 +20,7 @@ suspend fun <T : Any> safeApiCall(apiCall: suspend () -> T): NetworkResult<T> {
         Log.e("ConnectException:", e.toString())
         e.printStackTrace()
         NetworkResult.NetworkError(e)
-    }catch (e: Exception) {
+    } catch (e: Exception) {
         Log.e("Exception:", e.toString())
         e.printStackTrace()
         NetworkResult.NetworkError(e)

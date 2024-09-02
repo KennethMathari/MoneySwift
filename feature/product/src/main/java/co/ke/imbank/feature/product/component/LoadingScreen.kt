@@ -25,8 +25,7 @@ fun LoadingScreen() {
             modifier = Modifier.size(70.dp),
             strokeWidth = 5.dp,
             color = Color.Blue,
-            trackColor = Color.Gray,
+            trackColor = Color.Gray
         )
-
     }
 }

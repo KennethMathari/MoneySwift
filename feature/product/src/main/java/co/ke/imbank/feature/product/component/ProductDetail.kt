@@ -23,10 +23,11 @@ fun ProductDetail(
     modifier: Modifier,
     productViewModel: ProductViewModel = koinViewModel(),
     navigateToCartScreen: () -> Unit,
-    navigateToCheckoutScreen:(ProductPresentation)-> Unit
+    navigateToCheckoutScreen: (ProductPresentation) -> Unit
 ) {
     Column(
-        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AsyncImage(
             model = productPresentation.imageLocation,
@@ -53,5 +54,4 @@ fun ProductDetail(
             Text(text = "Buy Now")
         }
     }
-
 }

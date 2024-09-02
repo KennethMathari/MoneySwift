@@ -49,7 +49,6 @@ dependencies {
     implementation(project(":data:product"))
     implementation(project(":domain:cart"))
 
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -59,27 +58,27 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
-    //Koin
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
 
-    //implementation("androidx.compose.runtime:runtime:1.6.8")
-    //Coil
+    // implementation("androidx.compose.runtime:runtime:1.6.8")
+    // Coil
     implementation(libs.coil.compose)
-    //List-Detail Layout
+    // List-Detail Layout
     implementation(libs.androidx.adaptive)
     implementation(libs.androidx.adaptive.layout)
     implementation(libs.androidx.adaptive.navigation)
-    //Compose-Koin
+    // Compose-Koin
     implementation(libs.koin.androidx.compose)
 
-    //Kotlin Coroutine Test
+    // Kotlin Coroutine Test
     testImplementation(libs.kotlinx.coroutines.test)
-    //Turbine
+    // Turbine
     testImplementation(libs.turbine)
-    //mockK
+    // mockK
     testImplementation(libs.mockk)
-    //Instantiator
+    // Instantiator
     testImplementation(libs.instantiator)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

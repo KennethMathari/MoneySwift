@@ -10,7 +10,7 @@ import co.ke.imbank.feature.product.viewmodel.di.productViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MoneySwift: Application() {
+class MoneySwift : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {

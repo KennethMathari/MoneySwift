@@ -24,12 +24,9 @@ class CartViewModel(
     private val _cartState = MutableStateFlow(CartState())
     val cartState: StateFlow<CartState> get() = _cartState.asStateFlow()
 
-
     init {
         getCartItems()
-
     }
-
 
     private fun getCartItems() {
         viewModelScope.launch {
@@ -38,7 +35,8 @@ class CartViewModel(
                 when (result) {
                     is DatabaseResult.Error -> {
                         _cartState.value = CartState(
-                            cartList = null, errorMessage = "Unable to Fetch Cart Items!"
+                            cartList = null,
+                            errorMessage = "Unable to Fetch Cart Items!"
                         )
                     }
 
@@ -49,7 +47,6 @@ class CartViewModel(
                         )
                     }
                 }
-
             }
         }
     }
@@ -66,21 +63,25 @@ class CartViewModel(
         }
     }
 
-    fun cardPayment(cardPaymentPresentation: CardPaymentPresentation, cartList: List<CartPresentation>){
+    fun cardPayment(
+        cardPaymentPresentation: CardPaymentPresentation,
+        cartList: List<CartPresentation>
+    ) {
         _cartState.value = CartState(
             paymentMethod = cardPaymentPresentation.type,
             cartList = cartList,
             paymentImage = cardPaymentPresentation.paymentImage
         )
-
     }
 
-    fun mpesaPayment(mpesaPaymentPresentation: MpesaPaymentPresentation, cartList: List<CartPresentation>) {
+    fun mpesaPayment(
+        mpesaPaymentPresentation: MpesaPaymentPresentation,
+        cartList: List<CartPresentation>
+    ) {
         _cartState.value = CartState(
             paymentMethod = mpesaPaymentPresentation.type,
             cartList = cartList,
             paymentImage = mpesaPaymentPresentation.mpesaImage
         )
     }
-
 }

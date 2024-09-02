@@ -14,22 +14,23 @@ fun SuccessDialog(
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     dialogTitle: String,
-    icon: ImageVector,
+    icon: ImageVector
 ) {
     AlertDialog(icon = {
         Icon(icon, contentDescription = "Success", tint = Color.Green)
     }, title = {
-        Text(
-            text = dialogTitle, color = Color.Green, fontWeight = FontWeight.Bold
-        )
-    }, onDismissRequest = {
-        onDismissRequest()
-    }, confirmButton = {
-        TextButton(onClick = {
-            onConfirmation()
-        }) {
-            Text("OK")
-        }
-    }, containerColor = Color.White)
+            Text(
+                text = dialogTitle,
+                color = Color.Green,
+                fontWeight = FontWeight.Bold
+            )
+        }, onDismissRequest = {
+            onDismissRequest()
+        }, confirmButton = {
+            TextButton(onClick = {
+                onConfirmation()
+            }) {
+                Text("OK")
+            }
+        }, containerColor = Color.White)
 }
-

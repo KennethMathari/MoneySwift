@@ -54,7 +54,6 @@ import co.ke.imbank.feature.cart.viewmodel.CartViewModel
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CartScreen(
@@ -81,9 +80,8 @@ fun CartScreen(
             }
         } else {
             Column(
-                modifier = modifier.fillMaxSize(),
+                modifier = modifier.fillMaxSize()
             ) {
-
                 Text(
                     text = "Cart Items",
                     modifier = modifier.padding(8.dp),
@@ -94,8 +92,9 @@ fun CartScreen(
                     items(cartState.cartList ?: emptyList()) { cartItem ->
                         Card(
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                            ), modifier = modifier
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant
+                            ),
+                            modifier = modifier
                                 .fillMaxWidth()
                                 .padding(8.dp)
                         ) {
@@ -141,7 +140,6 @@ fun CartScreen(
                                     }
                                 }
 
-
                                 Icon(
                                     imageVector = Icons.Filled.Delete,
                                     contentDescription = "Delete item",
@@ -164,7 +162,6 @@ fun CartScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-
                     Text(
                         text = "SubTotal",
                         style = MaterialTheme.typography.titleLarge,
@@ -185,7 +182,6 @@ fun CartScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-
                     Text(
                         text = "Shipping",
                         style = MaterialTheme.typography.titleLarge,
@@ -213,7 +209,6 @@ fun CartScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-
                     Text(
                         text = "Total",
                         style = MaterialTheme.typography.titleLarge,
@@ -240,13 +235,11 @@ fun CartScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-
                     Text(
                         text = "Payment Method",
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
-
 
                     if (cartState.paymentImage != null) {
                         Image(
@@ -260,8 +253,8 @@ fun CartScreen(
                             contentScale = ContentScale.FillBounds
                         )
                     } else {
-
-                        Text(text = "+Add",
+                        Text(
+                            text = "+Add",
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
@@ -269,8 +262,8 @@ fun CartScreen(
                                     showBottomSheet = true
                                 })
                                 .align(Alignment.CenterVertically),
-                            color = Color.Gray)
-
+                            color = Color.Gray
+                        )
                     }
                 }
 
@@ -285,7 +278,7 @@ fun CartScreen(
                     )
                 }
 
-                if (errorDialog.value){
+                if (errorDialog.value) {
                     ErrorDialog(
                         onDismissRequest = { errorDialog.value = false },
                         onConfirmation = {
@@ -301,7 +294,7 @@ fun CartScreen(
                         if (cartState.paymentMethod != null) {
                             successDialog.value = true
                             errorDialog.value = false
-                        }else{
+                        } else {
                             errorDialog.value = true
                             successDialog.value = false
                         }
@@ -312,7 +305,6 @@ fun CartScreen(
                 ) {
                     Text(text = "Pay Now")
                 }
-
 
                 if (showBottomSheet) {
                     ModalBottomSheet(
@@ -327,11 +319,8 @@ fun CartScreen(
                         PaymentSheetContent(onCancel = {
                             showBottomSheet = false
                         })
-
                     }
                 }
-
-
             }
         }
     }

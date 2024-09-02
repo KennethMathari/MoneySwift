@@ -39,16 +39,16 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    //Koin
+    // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
 
     testImplementation(libs.junit)
-    //mockK
+    // mockK
     testImplementation(libs.mockk)
-    //Instantiator
+    // Instantiator
     testImplementation(libs.instantiator)
-    //Kotlin Coroutine Test
+    // Kotlin Coroutine Test
     testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -8,7 +8,8 @@ val cartDataModule = module {
 
     single<CartRepository> {
         CartRepositoryImpl(
-            cartDao = get(), ioDispatcher = get()
+            cartDao = get(),
+            ioDispatcher = get()
         )
     }
 }

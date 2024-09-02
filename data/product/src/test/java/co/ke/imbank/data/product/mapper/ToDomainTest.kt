@@ -8,7 +8,6 @@ class ToDomainTest {
 
     @Test
     fun toProductDomainReturnsProductDomain() {
-
         val productDomain = productDTO.toProductDomain()
 
         assertEquals(productDTO.id, productDomain.id)

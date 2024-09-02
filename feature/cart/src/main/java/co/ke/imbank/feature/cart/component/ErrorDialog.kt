@@ -15,25 +15,28 @@ fun ErrorDialog(
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     dialogTitle: String,
-    icon: ImageVector,
+    icon: ImageVector
 ) {
     AlertDialog(icon = {
         Icon(icon, contentDescription = "Error", tint = Color.Red)
     }, title = {
-        Text(
-            text = dialogTitle, color = Color.Red, fontWeight = FontWeight.Bold
-        )
-    }, text = {
-        Text(
-            text = "Please Add a Payment Method!", fontSize = 17.sp
-        )
-    }, onDismissRequest = {
-        onDismissRequest()
-    }, confirmButton = {
-        TextButton(onClick = {
-            onConfirmation()
-        }) {
-            Text("OK")
-        }
-    }, containerColor = Color.White)
+            Text(
+                text = dialogTitle,
+                color = Color.Red,
+                fontWeight = FontWeight.Bold
+            )
+        }, text = {
+            Text(
+                text = "Please Add a Payment Method!",
+                fontSize = 17.sp
+            )
+        }, onDismissRequest = {
+            onDismissRequest()
+        }, confirmButton = {
+            TextButton(onClick = {
+                onConfirmation()
+            }) {
+                Text("OK")
+            }
+        }, containerColor = Color.White)
 }

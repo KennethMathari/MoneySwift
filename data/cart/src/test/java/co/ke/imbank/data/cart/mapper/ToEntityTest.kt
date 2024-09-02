@@ -7,8 +7,7 @@ import org.junit.Test
 class ToEntityTest {
 
     @Test
-    fun toCartEntityReturnsCartEntity(){
-
+    fun toCartEntityReturnsCartEntity() {
         val cartEntity = cartDomain.toCartEntity()
 
         assertEquals(cartDomain.id, cartEntity.id)
