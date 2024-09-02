@@ -3,11 +3,12 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     id("kotlin-parcelize")
+    kotlin("kapt")
 }
 
 android {
     namespace = "co.ke.imbank.feature.product"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24

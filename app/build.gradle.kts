@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "co.ke.imbank.moneyswift"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "co.ke.imbank.moneyswift"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -25,6 +25,15 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        debug {
+            isShrinkResources = true
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

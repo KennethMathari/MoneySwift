@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "co.ke.imbank.data.product"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -49,10 +49,10 @@ dependencies {
     //Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
-//    //AppSearch
-//    implementation(libs.androidx.appsearch)
-//    kapt(libs.androidx.appsearch.compiler)
-//    implementation(libs.androidx.appsearch.local.storage)
+    //AppSearch
+    implementation(libs.androidx.appsearch)
+    kapt(libs.androidx.appsearch.compiler)
+    implementation(libs.androidx.appsearch.local.storage)
 
     testImplementation(libs.junit)
     //mockK

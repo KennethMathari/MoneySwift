@@ -6,7 +6,7 @@ import co.ke.imbank.core.database.dao.CartDao
 import co.ke.imbank.core.database.entity.CartEntity
 
 @Database(
-    entities = [CartEntity::class], version = 1
+    entities = [CartEntity::class], version = 1, exportSchema = false
 )
 
 abstract class MoneySwiftDatabase: RoomDatabase()  {

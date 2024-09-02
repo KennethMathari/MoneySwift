@@ -37,6 +37,7 @@ After opening the project, build and run to install the app in the emulator or a
 - <b>Retrofit </b>: For network operations to fetch data from the API.
 - <b>Kotlinx Serialization </b>: Facilitates data serialization and deserialization in a format-agnostic way.
 - <b>Room </b>: For local storage.
+- <b>App Search </b>: a high-performance on-device search solution for managing locally stored, structured data.
 - <b>List-Detail Layout </b>: For a dual-pane layout where one pane presents a list of items and another pane displays the details of items selected from the list.
 - <b>Instantiator </b>: a little Kotlin library that uses reflection to fill data class with random test data.
 - <b>Coil </b>: For image loading and caching.

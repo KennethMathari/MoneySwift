@@ -1,5 +1,6 @@
 package co.ke.imbank.data.product.di
 
+import co.ke.imbank.data.product.local.SearchManager
 import co.ke.imbank.data.product.network.service.ProductService
 import co.ke.imbank.data.product.repository.ProductRepositoryImpl
 import co.ke.imbank.domain.product.repository.ProductRepository
@@ -29,6 +30,12 @@ val productDataModule = module {
 
     single<CoroutineScope> {
         CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    }
+
+    single<SearchManager> {
+        SearchManager(
+            context = get(), ioDispatcher = get(), scope = get()
+        )
     }
 
 }
