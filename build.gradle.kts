@@ -4,5 +4,23 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.compose.compiler) apply false
-    id("com.google.devtools.ksp") version "2.0.20-1.0.24" apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.ktlint) apply false
+}
+
+subprojects {
+
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+        verbose.set(true)
+        android.set(true)
+        outputToConsole.set(true)
+        outputColorName.set("RED")
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
+    }
 }
