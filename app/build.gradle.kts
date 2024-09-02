@@ -27,8 +27,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
 
@@ -36,8 +35,7 @@ android {
             isShrinkResources = true
             isMinifyEnabled = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -86,7 +84,7 @@ dependencies {
     //Kotlinx Serialization Json
     implementation(libs.kotlinx.serialization.json)
     // Stripe Android SDK
-    implementation ("com.stripe:stripe-android:20.48.6")
+    implementation("com.stripe:stripe-android:20.48.6")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
