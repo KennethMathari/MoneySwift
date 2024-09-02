@@ -1,7 +1,5 @@
 package co.ke.imbank.moneyswift.ui.navigation
 
-import android.app.Activity
-import android.content.Context
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable

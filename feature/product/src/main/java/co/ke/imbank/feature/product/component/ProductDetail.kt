@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import co.ke.imbank.domain.cart.model.CartDomain
 import co.ke.imbank.feature.product.mapper.toCartDomain
 import co.ke.imbank.feature.product.model.ProductPresentation
 import co.ke.imbank.feature.product.viewmodel.ProductViewModel

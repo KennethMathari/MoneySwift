@@ -1,18 +1,14 @@
 package co.ke.imbank.moneyswift
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.core.view.WindowCompat
 import co.ke.imbank.feature.cart.StripeManager
 import co.ke.imbank.moneyswift.ui.App
-import co.ke.imbank.moneyswift.ui.theme.MoneySwiftTheme
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
-import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity(), StripeManager {
 

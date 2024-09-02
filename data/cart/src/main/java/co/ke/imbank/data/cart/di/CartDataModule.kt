@@ -2,7 +2,6 @@ package co.ke.imbank.data.cart.di
 
 import co.ke.imbank.data.cart.repository.CartRepositoryImpl
 import co.ke.imbank.domain.cart.repository.CartRepository
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
 val cartDataModule = module {
