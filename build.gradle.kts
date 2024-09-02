@@ -18,6 +18,7 @@ subprojects {
         android.set(true)
         outputToConsole.set(true)
         outputColorName.set("RED")
+        disabledRules.set(setOf("import-ordering"))
         filter {
             exclude("**/generated/**")
             include("**/kotlin/**")

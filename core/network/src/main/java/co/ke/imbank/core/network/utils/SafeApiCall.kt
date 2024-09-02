@@ -1,6 +1,5 @@
 package co.ke.imbank.core.network.utils
 
-import android.util.Log
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.ConnectException
@@ -9,19 +8,15 @@ suspend fun <T : Any> safeApiCall(apiCall: suspend () -> T): NetworkResult<T> {
     return try {
         NetworkResult.Success(apiCall())
     } catch (e: IOException) {
-        Log.e("IOException:", e.toString())
         e.printStackTrace()
         NetworkResult.NetworkError(e)
     } catch (e: HttpException) {
-        Log.e("Http Error:", e.toString())
         e.printStackTrace()
         extractHttpException(e)
     } catch (e: ConnectException) {
-        Log.e("ConnectException:", e.toString())
         e.printStackTrace()
         NetworkResult.NetworkError(e)
     } catch (e: Exception) {
-        Log.e("Exception:", e.toString())
         e.printStackTrace()
         NetworkResult.NetworkError(e)
     }

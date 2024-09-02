@@ -1,6 +1,6 @@
 package co.ke.imbank.core.network.di
 
-import co.ke.imbank.core.network.utils.Constants.BASE_URL
+import co.ke.imbank.core.network.utils.Constants.baseUrl
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -18,7 +18,7 @@ val networkModule = module {
     single<Retrofit> {
         val contentType = "application/json".toMediaType()
 
-        Retrofit.Builder().baseUrl(BASE_URL).client(get())
+        Retrofit.Builder().baseUrl(baseUrl).client(get())
             .addConverterFactory(Json.asConverterFactory(contentType)).build()
     }
 }
